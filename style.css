@@ -1,0 +1,17 @@
+a {
+color: blue;
+font-size: 20px;
+background-color: lightgreen;
+padding: 20px;
+text-align: center;
+padding: 25px;
+border-radius: 12px;
+position: absolute;
+top: 20px;
+}
+
+body{
+    background-image: url("Assets/images.png");
+    -webkit-background-size: cover;
+    background-repeat: no-repeat ;
+}
