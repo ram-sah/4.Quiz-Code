@@ -1,3 +1,4 @@
+/* */
 a {
 color: blue;
 font-size: 20px;
@@ -9,9 +10,36 @@ border-radius: 12px;
 position: absolute;
 top: 20px;
 }
-
+/* */
 body{
     background-image: url("Assets/images.png");
     -webkit-background-size: cover;
     background-repeat: no-repeat ;
+}
+/* */
+#wrapper {
+    position: absolute;
+    padding-top: 5%;
+    font-size: larger;
+    font-weight: bold;
+    text-align: center;
+    left: 30%;
+    top: 15%;
+    width: 40%;
+    height: 70%;
+    border: 4px solid blue;
+    border-radius: 5px;
+}
+/* */
+#startTime{
+    background-color: orangered;   
+    color: white;
+    font-size: 20px;
+    padding: 15px;
+    border-radius: 15px;
+    margin-top: 20px;
+}
+/* */
+.questionDiv{
+    margin: 20px;
 }

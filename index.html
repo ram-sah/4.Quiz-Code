@@ -6,14 +6,16 @@
     <meta charset="UTF-8">
     <!-- sets the width of the page with the device /initial-scale sets the initial zoom level-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--This spport any verson internet Explorer brouser -->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <!--This is title of the page-->
     <title>Code Quiz</title>
     <!--To link with CSS file-->
     <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="questions.js"></script>
 </head>
 
 <body>
-
     <!--link to highscore page-->
     <a href="scores.html">Click to View Scores</a>
     <!--This is main wrapper-->
@@ -22,10 +24,17 @@
         <div id="currentTime"></div>
         <!--ID for quiz content -->
         <div id="questionDiv">
+            <h1>Coding Quiz Challenge</h1>
+            <p>Try to Answer the following Code-Related Questions within the time limit.
+                Keep in Mind that incorrect Answers will be penalize your Score/Time by ten Seconds!
+            </p>
+            <ul id="choicesUl"> </ul>
+            <!--Buttons-->
+            <button id="startTime">Click Here to Start Quiz</button>
 
         </div>
     </div>
-
+        <script src="questions.js"></script>
 </body>
 
 </html>
