@@ -27,7 +27,7 @@ body{
     top: 15%;
     width: 40%;
     height: 70%;
-    border: 4px solid blue;
+    border: 2px solid blue;
     border-radius: 5px;
 }
 /* */
@@ -40,6 +40,24 @@ body{
     margin-top: 20px;
 }
 /* */
-.questionDiv{
+#goBack{
+    background-color: brown;
+    position: relative;
+    padding: 10px;
+    font-size: 25px;
+    color: white;
+    border-radius: 10px;
     margin: 20px;
+    text-align: center;
+}
+/* */
+#clear{
+    background-color: brown;
+    position: relative;
+    padding: 10px;
+    font-size: 25px;
+    color: white;
+    border-radius: 10px;
+    margin: 20px;
+    text-align: center;
 }
