@@ -10,7 +10,7 @@ allScores=JSON.parse(allScores);
 if (allScores !== null){
     for (var i = 0; i< allScores.length; i++){
        var creatEl = document.createElement("li");
-       creatEl.textContent=allScores[i].initials + " " +allScores[i].score;
+       creatEl.textContent=allScores[i].initials + " " + allScores[i].score;
        highScore.appendChild(creatEl);
     }
 }
@@ -114,9 +114,29 @@ function render(questionIndex) {
     });    
 }
 //Event to compare choices with answer 
-function compare(Event) {
+function compare(event) {
     var element = event.target;
     if (element.matches("li")) {
-        
+        var createDiv = document.createElement("div");
+        createDiv.setAttribute("id", "createDiv");
+        //Correct condition 
+        if (element.textContent === questions[questionIndex].answer){
+            score++;
+            createDiv.textContent = "Correct! The answer is: " + questions[questionIndex].answer;            
+        }else {
+            //will deduct -10 seconds off from secondsLeft for wrong answers
+            secondsLeft = secondsLeft - penalty;
+            createDiv.textContent = "Wrong! The correct answer is: " + questions[questionIndex].answer;
+        }        
     }
+    //question index determines number question user on
+    questionIndex++;
+    if (questionIndex >= questions.length) {
+        // All done will append last page with user starts
+        allDone();
+        createDiv.textContent = "End of Quiz!" + " " + "You got: " + score + "/" + questions.length + "correct Answers";        
+    } else {
+        render(questionIndex);
+    }
+    questionsDiv.appendChild(createDiv);    
 }
