@@ -10,7 +10,7 @@ allScores=JSON.parse(allScores);
 if (allScores !== null){
     for (var i = 0; i< allScores.length; i++){
        var creatEl = document.createElement("li");
-       creatEl.textContent=allScores[i].initials + " " + allScores[i].score;
+       creatEl.textContent = allScores[i].initials + " " + allScores[i].score;
        highScore.appendChild(creatEl);
     }
 }
@@ -139,4 +139,86 @@ function compare(event) {
         render(questionIndex);
     }
     questionsDiv.appendChild(createDiv);    
+}
+// All done will append last page 
+function allDone () {
+    questionsDiv.innerHTML = " ";
+    currentTime.innerHTML = " ";
+
+    // Heading 
+    var createH1 = document.createElement("H1");
+    createH1.setAttribute("id", "createH1");
+    createH1.textContent = "All Done!";
+
+    questionsDiv.appendChild(createH1);
+
+    //Paragraph 
+    var createP = document.createElement("p");
+    createP.setAttribute("id", "createP");
+
+    questionsDiv.appendChild(createP);
+
+    //Calculate time remaining to replaces it with score
+    if (secondsLeft >= 0) {
+        var timeRemaining = secondsLeft;
+        var createP2 = document.createElement("p");
+        clearInterval(holdInterval);
+        createP2.textContent = "Your Final Score is: " + timeRemaining;
+
+        questionsDiv.appendChild(createP2);        
+    }
+
+    //Label 
+    var createLabel = document.createElement("label");
+    createLabel.setAttribute("id", "createLabel");
+    createLabel.textContent = "Enter your initials: ";
+
+    questionsDiv.appendChild(createLabel);
+
+    // Input 
+    var createInput = document.createElement("input");
+    createInput.setAttribute("type", "text");
+    createInput.setAttribute("id", "initials");
+    createInput.textContent = " ";
+
+    questionsDiv.appendChild(createInput);
+
+    //submit
+    var createSubmit = document.createElement("button");
+    createSubmit.setAttribute("type", "submit");
+    createSubmit.setAttribute("id", "submit");
+    createSubmit.textContent = "submit";
+
+    questionsDiv.appendChild(createSubmit);
+
+    //Event listener to capture initials and local storage for initials and scores
+    createSubmit.addEventListener("click", function (){
+        var initials = createInput.value;
+
+        if (initials === null) {
+            console.log("No Initials")
+            alert("No Initials Entered");            
+        } else {
+            var finalScore = {
+                initials: initials,
+                score: timeRemaining
+            }
+            console.log(finalScore);
+            var allScores = localStorage.getItem("allScores");
+            if (allScores === null) {
+                allScores = [];
+
+            } else {
+                allScores = JSON.parse(allScores);                
+            }
+            allScores.push(finalScore);
+
+            var newScore = JSON.stringify(allScores);
+            localStorage.setItem("allScores", newScore);
+            
+            //Final stage
+            window.location.replace("./scores.html");
+
+        }
+    });
 }

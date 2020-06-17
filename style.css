@@ -1,4 +1,4 @@
-/* */
+/*from index.html link to scores.html */
 a {
 color: blue;
 font-size: 20px;
@@ -10,13 +10,13 @@ border-radius: 12px;
 position: absolute;
 top: 20px;
 }
-/* */
+/*background color */
 body{
     background-image: url("Assets/images.png");
     -webkit-background-size: cover;
     background-repeat: no-repeat ;
 }
-/* */
+/*wrapper of page text */
 #wrapper {
     position: absolute;
     padding-top: 5%;
@@ -30,7 +30,7 @@ body{
     border: 2px solid blue;
     border-radius: 5px;
 }
-/* */
+/* Start time from index.html file*/
 #startTime{
     background-color: orangered;   
     color: white;
@@ -39,7 +39,11 @@ body{
     border-radius: 15px;
     margin-top: 20px;
 }
-/* */
+/*ID for Current timer index HTML */
+#currentTime{
+    float: right;
+}
+/*goBack from scores.html file */
 #goBack{
     background-color: brown;
     position: relative;
@@ -50,7 +54,7 @@ body{
     margin: 20px;
     text-align: center;
 }
-/* */
+/*goBack from scores.html file */ 
 #clear{
     background-color: brown;
     position: relative;
@@ -61,3 +65,4 @@ body{
     margin: 20px;
     text-align: center;
 }
+
