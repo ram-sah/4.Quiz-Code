@@ -1,31 +1,3 @@
-//declared variables
-var highScore = document.querySelector("#highScore");
-var clear = document.querySelector("#clear");
-var goBack = document.querySelector("#goBack");
-
-//Event listener to clear scores
-clear.addEventListener("click", function () {
-    localStorage.clear();
-    location.reload();
-    console.log(clear);
-});
-
-//Retrives local storage
-var allScores = localStorage.getItem("allScores");
-allScores = JSON.parse(allScores);
-
-if (allScores !== null) {
-    for (var i = 0; i < allScores.length; i++) {
-        var creatEl = document.createElement("li");
-        creatEl.textContent = allScores[i].initials + " " + allScores[i].score;
-        highScore.appendChild(creatEl);
-    }
-}
-//Event listener to move to the index.html page
-goBack.addEventListener("click", function () {
-    window.location.replace("./index.html");
-});
-
 //var with array and object for questions
 var questions = [
     {
@@ -151,12 +123,6 @@ function allDone() {
     createH1.textContent = "All Done!";
 
     questionsDiv.appendChild(createH1);
-
-    //Paragraph 
-    // var createP = document.createElement("p");
-    // createP.setAttribute("id", "createP");
-
-    // questionsDiv.appendChild(createP);
 
     //Calculate time remaining to replaces it with score
     if (secondsLeft >= 0) {
