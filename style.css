@@ -5,7 +5,6 @@ font-size: 20px;
 background-color: lightgreen;
 padding: 20px;
 text-align: center;
-padding: 25px;
 border-radius: 12px;
 position: absolute;
 top: 20px;
@@ -18,8 +17,7 @@ body{
 }
 /*wrapper of page text */
 #wrapper {
-    position: absolute;
-    padding-top: 5%;
+    position: absolute;   
     font-size: larger;
     font-weight: bold;
     text-align: center;
@@ -41,7 +39,8 @@ body{
 }
 /*ID for Current timer index HTML */
 #currentTime{
-    float: right;
+    float: inline-end ;
+    margin-bottom: 50px;
 }
 /*goBack from scores.html file */
 #goBack{
@@ -66,3 +65,85 @@ body{
     text-align: center;
 }
 
+#submit {
+    background-color: blue;
+    margin-left: 33%;
+    padding: 5px, 25px;
+    font-size: 20px;
+    color: white;
+    border-radius: 10px;
+}
+
+label {
+    margin-right: 10px;
+}
+input {
+    margin-bottom: 20px;
+    width: 50%;
+    border: 1px solid lightgray;
+}
+
+h1 {
+    text-align: center;
+}
+
+li {
+    background-color:green;
+    margin-top: 10px;
+    padding: 10px 20px;
+    width: 80%;
+    font-size: 18px;
+    color: white;
+    text-align: left;
+}
+
+#createDiv {
+    margin-top: 20px;
+    border-top: 1px solid lightgray;
+}
+
+/* Start media queries */
+/* A Media Query max-width: 786px */
+@media screen and (max-width: 786px) {
+/* Resized content to fit 786px  */
+body {
+    max-width: 786px;
+}
+/* Resized main-content to fit 786px  */
+#wrapper {
+position: absolute;
+left: 20%;
+}
+
+a {
+margin-left: 20%;
+}
+#goBack {
+    
+    position: relative;
+    left: 55%;
+}
+
+#clear {
+    
+    position: relative;
+    right: 5%;
+    
+}
+}
+
+/* A Media Query max-width: 640px */
+@media screen and (max-width: 640px) {
+/* Resized content to fit 640px  */
+body {
+    min-width: 640px;
+}
+/* Resized main-content to fit 640px  */
+#wrapper {
+position: absolute;
+left: 10%;
+}
+a {
+  margin-left: 10%;
+}
+}

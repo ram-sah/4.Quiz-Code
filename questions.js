@@ -1,26 +1,26 @@
 //declared variables
 var highScore = document.querySelector("#highScore");
 var clear = document.querySelector("#clear")
-var goBack = document.getElementById("goBack");
+var goBack = document.querySelector("#goBack");
+
+//Event listener to clear scores
+clear.addEventListener("click", function(){
+    localStorage.clear();
+    location.reload();
+   
+});
 
 //Retrives local storage
 var allScores = localStorage.getItem("allScores");
 allScores=JSON.parse(allScores);
 
 if (allScores !== null){
-    for (var i = 0; i< allScores.length; i++){
+    for (var i = 0; i< allScores.length; i++){        
        var creatEl = document.createElement("li");
        creatEl.textContent = allScores[i].initials + " " + allScores[i].score;
        highScore.appendChild(creatEl);
     }
 }
-
-//Event listener to clear scores
-clear.addEventListener("click", function(){
-    localStorage.clear();
-    location.reload();
-});
-
 //Event listener to move to the index.html page
 goBack.addEventListener("click", function(){
     window.location.replace("./index.html");
@@ -29,27 +29,27 @@ goBack.addEventListener("click", function(){
 //var with array and object for questions
 var questions= [
     {
-        title: "Question-1: Commonly used data types DO NOT include:",
+        title: "Q-1: Commonly used data types DO NOT include:",
         choices: ["strings", "booleans", "alerts", "numbers"] ,
         answer: "alerts"
     },
     {
-        title: "Question-2: What is the correct way to call method on the math global object?",
+        title: "Q-2: What is the correct way to call method on the math global object?",
         choices: ["random.math()", "Random.math()", "Random.Math()", "Math.random()"],
         answer: "Math.random()"
     },
     {
-        title: "Question-3: What functionn is used to print in to the console?",
+        title: "Q-3: What functionn is used to print in to the console?",
         choices: ["console.log()", "console", "function()", "console.Log"],
         answer: "console.log()"
     },
     {
-        title: "Question-4: The condition in an if/else ststement is enclosed within -----.",
+        title: "Q-4: The condition in an if/else ststement is enclosed within -----.",
         choices: ["quotes", "curly brackets", "parentheses", "square brackets"],
         answer: "parentheses"
     },
     {
-        title: "Question-5: String values must be enclosed within _____ when being assigned to variables",
+        title: "Q-5: String values must be enclosed within _____ when being assigned to variables",
         choices: ["commas", "curly brackets", "quotes", "parentheses"],
         answer: "quotes"
     },
@@ -61,7 +61,7 @@ var questionIndex = 0;
 
 // Decleared variables from index.html page Start working code 
 var currentTime = document.querySelector("#currentTime");
-var timer = document.querySelector("#statrTime");
+var timer = document.querySelector("#startTime");
 var questionsDiv = document.querySelector("#questionsDiv");
 var wrapper = document.querySelector("#wrapper");
 
@@ -134,7 +134,7 @@ function compare(event) {
     if (questionIndex >= questions.length) {
         // All done will append last page with user starts
         allDone();
-        createDiv.textContent = "End of Quiz!" + " " + "You got: " + score + "/" + questions.length + "correct Answers";        
+        createDiv.textContent = "End of Quiz!" + " " + "You got: " + score + "/" + questions.length + " -Correct Answers";        
     } else {
         render(questionIndex);
     }
@@ -153,10 +153,10 @@ function allDone () {
     questionsDiv.appendChild(createH1);
 
     //Paragraph 
-    var createP = document.createElement("p");
-    createP.setAttribute("id", "createP");
+    // var createP = document.createElement("p");
+    // createP.setAttribute("id", "createP");
 
-    questionsDiv.appendChild(createP);
+    // questionsDiv.appendChild(createP);
 
     //Calculate time remaining to replaces it with score
     if (secondsLeft >= 0) {
