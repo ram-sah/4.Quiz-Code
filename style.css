@@ -42,6 +42,7 @@ body{
 #currentTime{
     float: inline-end ;
     margin-bottom: 50px;
+    color: white;
 }
 /*goBack from scores.html file */
 #goBack{
@@ -70,15 +71,17 @@ body{
     padding: 6px;
     color:red;
     font-size: 22px;
+    border-radius: 15px;
 }
 /*Submit button styles*/
 #submit {
     background-color: blue;
     margin-left: 33%;
-    padding: 5px, 25px;
+    padding: 10px;
     font-size: 20px;
     color: white;
     border-radius: 10px;
+    font-size: 25px;
 }
 
 label {
@@ -135,8 +138,7 @@ margin-left: 20%;
 #clear {
     
     position: relative;
-    right: 5%;
-    
+    right: 5%;    
 }
 }
 
