@@ -1,36 +1,36 @@
 //declared variables
 var highScore = document.querySelector("#highScore");
-var clear = document.querySelector("#clear")
+var clear = document.querySelector("#clear");
 var goBack = document.querySelector("#goBack");
 
 //Event listener to clear scores
-clear.addEventListener("click", function(){
+clear.addEventListener("click", function () {
     localStorage.clear();
     location.reload();
-   
+    console.log(clear);
 });
 
 //Retrives local storage
 var allScores = localStorage.getItem("allScores");
-allScores=JSON.parse(allScores);
+allScores = JSON.parse(allScores);
 
-if (allScores !== null){
-    for (var i = 0; i< allScores.length; i++){        
-       var creatEl = document.createElement("li");
-       creatEl.textContent = allScores[i].initials + " " + allScores[i].score;
-       highScore.appendChild(creatEl);
+if (allScores !== null) {
+    for (var i = 0; i < allScores.length; i++) {
+        var creatEl = document.createElement("li");
+        creatEl.textContent = allScores[i].initials + " " + allScores[i].score;
+        highScore.appendChild(creatEl);
     }
 }
 //Event listener to move to the index.html page
-goBack.addEventListener("click", function(){
+goBack.addEventListener("click", function () {
     window.location.replace("./index.html");
 });
 
 //var with array and object for questions
-var questions= [
+var questions = [
     {
         title: "Q-1: Commonly used data types DO NOT include:",
-        choices: ["strings", "booleans", "alerts", "numbers"] ,
+        choices: ["strings", "booleans", "alerts", "numbers"],
         answer: "alerts"
     },
     {
@@ -66,7 +66,7 @@ var questionsDiv = document.querySelector("#questionsDiv");
 var wrapper = document.querySelector("#wrapper");
 
 //Seconds left is 20 seconds per question
-var secondsLeft = 101;
+var secondsLeft = 51;
 //holds interval time
 var holdInterval = 0;
 // holds penalty time
@@ -75,10 +75,10 @@ var penalty = 10;
 var ulCreate = document.createElement("ul");
 
 //triggers timer on the button to shows a display on the screen
-timer.addEventListener("click", function(){
+timer.addEventListener("click", function () {
     //Since timer originally set to zero, we check zero
-    if (holdInterval === 0){
-        holdInterval = setInterval(function(){
+    if (holdInterval === 0) {
+        holdInterval = setInterval(function () {
             secondsLeft--;
             currentTime.textContent = "Remaining Time: " + secondsLeft;
 
@@ -87,7 +87,7 @@ timer.addEventListener("click", function(){
                 allDone();
                 currentTime.textContent = "Time is over!";
             }
-        },1000);
+        }, 1000);
     }
     render(questionIndex);
 });
@@ -95,8 +95,8 @@ timer.addEventListener("click", function(){
 //Render questions and choices to page
 function render(questionIndex) {
     //clear existing data
-    questionsDiv.innerHTML= " ";
-    ulCreate.innerHTML= "";
+    questionsDiv.innerHTML = " ";
+    ulCreate.innerHTML = "";
     // for loops to loop through all information of array
     for (var i = 0; i < questions.length; i++) {
         //appends question title only
@@ -105,13 +105,13 @@ function render(questionIndex) {
         questionsDiv.textContent = userQuestion;
     }
     //change new list for each of question choices
-    userChoices.forEach(function(newItem){
+    userChoices.forEach(function (newItem) {
         var listItem = document.createElement("li");
         listItem.textContent = newItem;
         questionsDiv.appendChild(ulCreate);
         ulCreate.appendChild(listItem);
-        listItem.addEventListener("click", (compare));        
-    });    
+        listItem.addEventListener("click", (compare));
+    });
 }
 //Event to compare choices with answer 
 function compare(event) {
@@ -120,28 +120,28 @@ function compare(event) {
         var createDiv = document.createElement("div");
         createDiv.setAttribute("id", "createDiv");
         //Correct condition 
-        if (element.textContent === questions[questionIndex].answer){
+        if (element.textContent === questions[questionIndex].answer) {
             score++;
-            createDiv.textContent = "Correct! The answer is: " + questions[questionIndex].answer;            
-        }else {
+            createDiv.textContent = "Correct! The answer is: " + questions[questionIndex].answer;
+        } else {
             //will deduct -10 seconds off from secondsLeft for wrong answers
             secondsLeft = secondsLeft - penalty;
             createDiv.textContent = "Wrong! The correct answer is: " + questions[questionIndex].answer;
-        }        
+        }
     }
     //question index determines number question user on
     questionIndex++;
     if (questionIndex >= questions.length) {
         // All done will append last page with user starts
         allDone();
-        createDiv.textContent = "End of Quiz!" + " " + "You got: " + score + "/" + questions.length + " -Correct Answers";        
+        createDiv.textContent = "End of Quiz!" + " " + "You got: " + score + "/" + questions.length + " -Correct Answers";
     } else {
         render(questionIndex);
     }
-    questionsDiv.appendChild(createDiv);    
+    questionsDiv.appendChild(createDiv);
 }
 // All done will append last page 
-function allDone () {
+function allDone() {
     questionsDiv.innerHTML = " ";
     currentTime.innerHTML = " ";
 
@@ -165,7 +165,7 @@ function allDone () {
         clearInterval(holdInterval);
         createP2.textContent = "Your Final Score is: " + timeRemaining;
 
-        questionsDiv.appendChild(createP2);        
+        questionsDiv.appendChild(createP2);
     }
 
     //Label 
@@ -192,12 +192,12 @@ function allDone () {
     questionsDiv.appendChild(createSubmit);
 
     //Event listener to capture initials and local storage for initials and scores
-    createSubmit.addEventListener("click", function (){
+    createSubmit.addEventListener("click", function () {
         var initials = createInput.value;
 
         if (initials === null) {
             console.log("No Initials")
-            alert("No Initials Entered");            
+            alert("No Initials Entered");
         } else {
             var finalScore = {
                 initials: initials,
@@ -209,13 +209,13 @@ function allDone () {
                 allScores = [];
 
             } else {
-                allScores = JSON.parse(allScores);                
+                allScores = JSON.parse(allScores);
             }
             allScores.push(finalScore);
 
             var newScore = JSON.stringify(allScores);
             localStorage.setItem("allScores", newScore);
-            
+
             //Final stage
             window.location.replace("./scores.html");
 
