@@ -125,14 +125,13 @@ function allDone() {
     questionsDiv.appendChild(createH1);
 
     //Calculate time remaining to replaces it with score
-    if (secondsLeft >= 0) {
+   
         var timeRemaining = secondsLeft;
         var createP2 = document.createElement("p");
         clearInterval(holdInterval);
         createP2.textContent = "Your Final Score is: " + timeRemaining;
 
-        questionsDiv.appendChild(createP2);
-    }
+        questionsDiv.appendChild(createP2);  
 
     //Label 
     var createLabel = document.createElement("label");
